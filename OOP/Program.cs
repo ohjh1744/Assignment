@@ -59,39 +59,21 @@
         }
 
         //2. 개방-폐쇄 원칙과 의존성 역전 원칙
-        //안좋은 예시  Programmer가 designer 의지하는 상태 -> designer 변동값에 따라 ProgrammerBad2도 영향을 미치게 됨.
+        //안좋은 예시  Desiner가 introduce 함수를 사용하려면 introduce 안에 switch문이나 오버로딩을 하는 등 기존 클래스를 수정해야한다.
+        class HumanBad2
+        {
+            public void Introduce(ProgrammerBad2 programmer, string name)
+            {
+                Console.WriteLine($"내이름은 {name}이고, 프로그래머다");
+            }
+        }
         class ProgrammerBad2
         {
-            private DesignerBad2 designer;
-            public ProgrammerBad2(DesignerBad2 humdesigneran)
-            {
-                this.designer = designer;
-            }
-
-            public void ProgrammerEat() { designer.Eat(); }
-            public void Sleep(){
-                //if 디자이너가 아니라면
-               Console.WriteLine("잠을 자다"); 
-            }
-
-            //프로그래머관련 기능
-            public void Develop() { Console.WriteLine("개발하다"); }
-            public void ReFactoring() { Console.WriteLine("재개발하다"); }
-            public void Maintain() { Console.WriteLine("유지하다"); }
+            string name;
         }
         class DesignerBad2
         {
-           public void Eat() { Console.WriteLine("디자이너가 밥을 먹다"); }
-           public void Sleep()
-            { 
-                //if 개발자가 아니라면
-                Console.WriteLine("잠을 자다"); 
-            }
-
-            //디자이너관련 기능
-            public void Draw() { Console.WriteLine("그리다"); }
-            public void Erase() { Console.WriteLine("지우다"); }
-            public void Design() { Console.WriteLine("디자인하다"); }
+            string name;
         }
 
         
