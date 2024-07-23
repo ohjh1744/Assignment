@@ -6,6 +6,7 @@ namespace AbstractClass2
 {
     internal class Program
     {
+        //각 포켓몬마다 상속을 하고, Trainer함수의 UpdateMonster의 매개변수로 사용하여 포켓몬의 정보를 가져옴.
         public interface IGetMonster
         {
             public Monster GetMonster();
@@ -111,7 +112,6 @@ namespace AbstractClass2
                     {
                         continue;
                     }
-                    Console.WriteLine(monster.getLevel);
                     monster.BaseAttack();
                 }
             }
