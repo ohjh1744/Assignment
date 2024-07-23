@@ -4,44 +4,32 @@ namespace Constructor
 {
     internal class Program
     {
-        class Monster
-        {
-            private int hp;
 
-            public Monster(int hp)
-            {
-                this.hp = hp;
-            }
-            public int ShowHp
-            {
-                get { return hp; }
-            }
+        public abstract class Monster
+        {
+            protected Tuple<string, int>[] monsterStatus;
+            public abstract void CreateMonster(int num, string name, int hp);
+            public abstract void ShowMonster(int num);
 
         }
-        class Trainer
+
+        public class Trainer : Monster
         {
             private string name;
-            private List<Monster> monsters;
 
             public Trainer(string name)
             {
                 this.name = name;
-                this.monsters = new List<Monster>();
+                base.monsterStatus = new Tuple<string, int>[6];
             }
-
-            public void CreateMonster(int hp)
+            public override void CreateMonster(int num, string name, int hp)
             {
-                monsters.Add(new Monster(hp));
+                monsterStatus[num] = new Tuple<string, int>(name, hp);
             }
-
-            public void ShowInformation()
+            public override void ShowMonster(int num)
             {
-                Console.WriteLine($"트레이너 이름은: {name}");
-
-                for (int i = 0; i < monsters.Count; i++)
-                {
-                    Console.WriteLine($"{i}번째 몬스터의 체력: {monsters[i].ShowHp}");
-                }
+                Console.WriteLine($"{num}번째 몬스터이름: {monsterStatus[num].Item1} ");
+                Console.WriteLine($"{num}번째 체력: {monsterStatus[num].Item2} ");
             }
 
         }
@@ -49,9 +37,11 @@ namespace Constructor
         {
 
             Trainer trainer = new Trainer("오준혁");
-            trainer.CreateMonster(50);
-            trainer.CreateMonster(60);
-            trainer.ShowInformation();
+            trainer.CreateMonster(1, "피카츄", 50);
+            trainer.CreateMonster(2, "가라도스", 60);
+            trainer.ShowMonster(1);
+            trainer.ShowMonster(2);
+
         }
 
     }
