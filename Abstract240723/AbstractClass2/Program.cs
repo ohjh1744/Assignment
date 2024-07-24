@@ -7,9 +7,9 @@ namespace AbstractClass2
     internal class Program
     {
         //각 포켓몬마다 상속을 하고, Trainer함수의 UpdateMonster의 매개변수로 사용하여 포켓몬의 정보를 가져옴.
-        public interface IGetMonster
+        public interface ITakeMonster
         {
-            public Monster GetMonster();
+            public Monster TakeMonster();
         }
         public enum MobType { Electric, Fire, Water, Grass , None}
         public abstract class Monster
@@ -30,7 +30,7 @@ namespace AbstractClass2
             public string getName { get { return name; } }
         }
 
-        public class Pikachu: Monster, IGetMonster
+        public class Pikachu: Monster, ITakeMonster
         {
             public Pikachu(string name, int level, MobType mobtype) : base(name, level, mobtype) { }
       
@@ -39,12 +39,12 @@ namespace AbstractClass2
                 Console.WriteLine("전광석화");
             }
 
-            public Monster GetMonster()
+            public Monster TakeMonster()
             {
                 return this;
             }
         }
-        public class Squirtle : Monster, IGetMonster
+        public class Squirtle : Monster, ITakeMonster
         {
             public Squirtle(string name, int level, MobType mobtype) : base(name, level, mobtype) { }
             public override void BaseAttack()
@@ -52,12 +52,12 @@ namespace AbstractClass2
                 Console.WriteLine("물총발사");
             }
 
-            public Monster GetMonster()
+            public Monster TakeMonster()
             {
                 return this;
             }
         }
-        public class Bulbasaur : Monster, IGetMonster
+        public class Bulbasaur : Monster, ITakeMonster
         {
             public Bulbasaur(string name, int level, MobType mobtype) : base(name, level, mobtype) { }
 
@@ -66,19 +66,19 @@ namespace AbstractClass2
                 Console.WriteLine("덩굴채찍");
             }
 
-            public Monster GetMonster()
+            public Monster TakeMonster()
             {
                 return this;
             }
         }
-        public class Charmander : Monster, IGetMonster
+        public class Charmander : Monster, ITakeMonster
         {
             public Charmander(string name, int level, MobType mobtype) : base(name, level, mobtype) { }
             public override void BaseAttack()
             {
                 Console.WriteLine("화염방사");
             }
-            public Monster GetMonster()
+            public Monster TakeMonster()
             {
                 return this;
             }
@@ -98,9 +98,9 @@ namespace AbstractClass2
                 monsters[0] = new Pikachu("Pikachu", 3, MobType.Electric);
             }
 
-            public void UpdateMonster(IGetMonster iGetMonster, int num)
+            public void UpdateMonster(ITakeMonster itakeMonster, int num)
             {
-                Monster monster = iGetMonster.GetMonster();
+                Monster monster = itakeMonster.TakeMonster();
                 monsters[num-1] = monster; 
             }
 
@@ -122,10 +122,10 @@ namespace AbstractClass2
         {
             
             Trainer trainer = new Trainer();
-            IGetMonster charmander = new Charmander("Charmander", 5, MobType.Fire);
+            ITakeMonster charmander = new Charmander("Charmander", 5, MobType.Fire);
             trainer.UpdateMonster(charmander, 2);
 
-            IGetMonster bulbasaur = new Bulbasaur("Bulbasaur", 3, MobType.Grass);
+            ITakeMonster bulbasaur = new Bulbasaur("Bulbasaur", 3, MobType.Grass);
             trainer.UpdateMonster(bulbasaur, 3);
 
             trainer.AllAttack();
