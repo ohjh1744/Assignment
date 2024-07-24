@@ -1,4 +1,7 @@
-﻿namespace OOP
+﻿using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
+
+namespace OOP
 {
     internal class Program
     {
@@ -25,185 +28,51 @@
         //4. 인터페이스 분리 원칙: 자신이 사용하지 않는 인터페이스는 구현x -> 사용하지 않은 인터페이스에 영향을 받으면 안된다
         //5. 의존성 역전 원칙: 자주 변화하는 것보단 변화가 거의 없는 거에 의존해야한다. -> 구체적 클래스보단 인터페이스나 추상클래스에 의존관계를 맺자.
 
-        //1. 단일 책임원칙 예시
-        //안좋은 예시
-        class Human
+        public class Human
         {
-            //사람관련 기능
-            public void Eat() { Console.WriteLine("먹다"); }
-            public void Sleep() { Console.WriteLine("자다"); }
-            public void Walk() { Console.WriteLine("걷다"); }
-
-            //프로그래머관련 기능
-            public void Develop() { Console.WriteLine("개발하다"); }
-            public void ReFactoring() { Console.WriteLine("재개발하다"); }
-            public void Maintain() { Console.WriteLine("유지하다"); }
-        }
-
-        //좋은 예시
-        class HumanGood
-        {
-            //사람관련 기능
-            public void Eat() { Console.WriteLine("먹다"); }
-            public void Sleep() { Console.WriteLine("자다"); }
-            public void Walk() { Console.WriteLine("걷다"); }
-
-        }
-
-        class Programmer
-        {
-            //프로그래머관련 기능
-            public void Develop() { Console.WriteLine("개발하다"); }
-            public void ReFactoring() { Console.WriteLine("재개발하다"); }
-            public void Maintain() { Console.WriteLine("유지하다"); }
-        }
-
-        //2. 개방-폐쇄 원칙과 의존성 역전 원칙
-        //안좋은 예시  Desiner가 introduce 함수를 사용하려면 introduce 안에 switch문이나 오버로딩을 하는 등 기존 클래스를 수정해야한다.
-        class HumanBad2
-        {
-            public void Introduce(ProgrammerBad2 programmer, string name)
+            Programmer programmer;
+            public Human(string name)
             {
-                Console.WriteLine($"내이름은 {name}이고, 프로그래머다");
+                programmer = new Programmer(name);
+            }
+            public void Introduce()
+            {
+                Console.WriteLine($"내이름은 {programmer.ShowName}이고, 프로그래머다");
             }
         }
-        class ProgrammerBad2
+        public class Programmer
         {
-            string name;
+            private string name;
+            public Programmer(string name)
+            {
+                this.name = name;
+            }
+            public string ShowName
+            {
+                get{ return name; }
+            }
         }
-        class DesignerBad2
-        {
-            string name;
-        }
-
         
-        //3. 리스코프 치환 원칙 -> 자식인 Designer가 부모 Programmer를 대신해서 일을 할수가 없다! ProgarmmerBad3 programmer = new DesignerBad()
-        public class ProgrammerBad3
+        public class Designer
         {
-            public virtual void DoWork()
+            private string name;
+            public Designer(string name)
             {
-                Console.WriteLine("개발하다");
+                this.name = name;
             }
-        } 
-
-        public class DesignerBad3: ProgrammerBad3
-        {
-            public override void DoWork()
+            public string ShowName
             {
-                Console.WriteLine("디자인하다");
+                get { return name; }
             }
         }
-
-        //4.인터페이스 분리 원칙 -> 디자이너는 C언어를 사용하지 않는다! 불필요한 의존
-        public interface Resource
-        {
-            void Xecel();
-            void Clanguage();
-        }
-
-        public class ProgrammerBad4: Resource
-        {
-            public void Xecel()
-            {
-                Console.WriteLine("Use Xecel");
-            }
-            public void Clanguage()
-            {
-                Console.WriteLine("Use Clanguage");
-            }
-        }
-
-        public class DesignerBad4 : Resource
-        {
-            public void Xecel()
-            {
-                Console.WriteLine("Use Xecel");
-            }
-            public void Clanguage()
-            {
-                Console.WriteLine("Use Clanguage");
-            }
-        }
-        //5.  designer 변수를 가지고 있음, 프로그래머가 디자이너를 의존하는 형태 -> 디자이너의 값이 변화함에 따라 프로그래머도 변화될수있음.
-        class ProgrammerBad5
-        {
-            private DesignerBad2 designer;
-            public ProgrammerBad5(DesignerBad5 humdesigneran)
-            {
-                this.designer = designer;
-            }
-
-            public void ProgrammerEat() { designer.Eat(); }
-
-            //프로그래머관련 기능
-            public void Develop() { Console.WriteLine("개발하다"); }
-            public void ReFactoring() { Console.WriteLine("재개발하다"); }
-            public void Maintain() { Console.WriteLine("유지하다"); }
-        }
-        class DesignerBad5
-        {
-            public void Eat() { Console.WriteLine("디자이너가 밥을 먹다"); }
-
-            //디자이너관련 기능
-            public void Draw() { Console.WriteLine("그리다"); }
-            public void Erase() { Console.WriteLine("지우다"); }
-            public void Design() { Console.WriteLine("디자인하다"); }
-        }
-
 
         static void Main(string[] args)
         {
-            ProgrammerBad3 programmer = new ProgrammerBad3();
-            programmer.DoWork();
+       
+           
+
         }
 
-        // solid원칙을 잘 지킨 코드
-        public abstract class AbsHuman
-        {
-            public abstract void Eat();
-            public abstract void Sleep();
-            public abstract void Walk();
-        }
 
-        class ProgrammerGood2 : AbsHuman
-        {
-            public override void Eat()
-            {
-                Console.WriteLine("프로그래머가 밥을 먹다");
-            }
-            public override void Sleep()
-            {
-                Console.WriteLine("프로그래머가 자다");
-            }
-            public override void Walk()
-            {
-                Console.WriteLine("프로그래머가 걷다");
-            }
-
-            //프로그래머관련 기능
-            public void Develop() { Console.WriteLine("개발하다"); }
-            public void ReFactoring() { Console.WriteLine("재개발하다"); }
-            public void Maintain() { Console.WriteLine("유지하다"); }
-        }
-
-        class DesignerGood2 : AbsHuman
-        {
-            public override void Eat()
-            {
-                Console.WriteLine("디자이너가 밥을 먹다");
-            }
-            public override void Sleep()
-            {
-                Console.WriteLine("디자이너가 자다");
-            }
-            public override void Walk()
-            {
-                Console.WriteLine("디자이너가 걷다");
-            }
-            //디자이너관련 기능
-            public void Draw() { Console.WriteLine("그리다"); }
-            public void Erase() { Console.WriteLine("지우다"); }
-            public void Design() { Console.WriteLine("디자인하다"); }
-        }
     }
 }
