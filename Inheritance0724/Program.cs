@@ -4,7 +4,8 @@ namespace Inheritance
 {
     internal class Program
     {
-
+        //롤챔피언: 부모클래스
+        //가렌, 그레이브즈, 나르 : 3개의 파생클래스
         public class LolChampion
         {
             protected string name;

@@ -9,25 +9,25 @@
             protected string name;
             protected int hp;
             protected int level;
-            public abstract void SkillQ();
+            public abstract void DoSkillQ();
 
-            public abstract void SkillW();
+            public abstract void DoSkillW();
 
-            public abstract void SkillE();
+            public abstract void DoSkillE();
 
         }
 
         public class Garen : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("결정타"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("용기"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("심판"));
             }
@@ -35,15 +35,15 @@
 
         public class Graves : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("화약 역류"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("연막탄"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("빨리 뽑기"));
             }
@@ -51,15 +51,15 @@
 
         public class Gnar : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("부메랑 던지기"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("슝슝"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("폴짝"));
             }
