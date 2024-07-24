@@ -20,24 +20,34 @@
 
             private string name;
             private int level;
-            private MobType mobtype;
+            private MobType type;
 
             protected Monster(string name, int level, MobType mobtype)
             {
                 this.name = name;
                 this.level = level;
-                this.mobtype = mobtype;
+                this.type = mobtype;
             }
 
             public abstract void BaseAttack();
 
-            public int GetLevel { get { return level; } }
-            public MobType GetType { get { return mobtype; } }
-            public string GetName { get { return name; } }
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
 
-            public int SetLevel { set { level = value; } }
-            public MobType SetType { set { mobtype = value; } }
-            public string SetName { set { name = value; } }
+            public int Level
+            {
+                get { return level; }
+                set { level = value; }
+            }
+
+            public MobType Type
+            {
+                get { return type; }
+                set { type = value; }
+            }
         }
 
         public class Pikachu : Monster, ITameable
@@ -121,7 +131,7 @@
             {
                 for (int i = 0; i < monsterNum; i++)
                 {
-                    if (monsters[i].GetType == MobType.None)
+                    if (monsters[i].Type == MobType.None)
                     {
                         continue;
                     }
