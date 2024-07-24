@@ -10,15 +10,15 @@ namespace Inheritance
             protected string name;
             protected int hp;
             protected int level;
-            public virtual void SkillQ()
+            public virtual void DoSkillQ()
             {
                 Console.WriteLine(("스킬q발사!"));
             }
-            public virtual void SkillW()
+            public virtual void DoSkillW()
             {
                 Console.WriteLine(("스킬w발사"));
             }
-            public virtual void SkillE()
+            public virtual void DoSkillE()
             {
                 Console.WriteLine(("스킬e발사!"));
             }
@@ -26,15 +26,15 @@ namespace Inheritance
 
         public class Garen : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("결정타"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("용기"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("심판"));
             }
@@ -42,15 +42,15 @@ namespace Inheritance
 
         public class Graves : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("화약 역류"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("연막탄"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("빨리 뽑기"));
             }
@@ -58,15 +58,15 @@ namespace Inheritance
 
         public class Gnar : LolChampion
         {
-            public override void SkillQ()
+            public override void DoSkillQ()
             {
                 Console.WriteLine(("부메랑 던지기"));
             }
-            public override void SkillW()
+            public override void DoSkillW()
             {
                 Console.WriteLine(("슝슝"));
             }
-            public override void SkillE()
+            public override void DoSkillE()
             {
                 Console.WriteLine(("폴짝"));
             }
