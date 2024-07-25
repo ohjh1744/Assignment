@@ -63,7 +63,7 @@ namespace Constructor
 
             public void UpdateMonster(int monsterNum , string name, int hp)
             {
-                if(monsterNum > numHave)
+                if(monsterNum < 1 || monsterNum > numHave)
                 {
                     Console.WriteLine("잘못된 포켓몬 숫자입니다.");
                 }
