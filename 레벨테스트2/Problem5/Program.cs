@@ -54,6 +54,7 @@ namespace Problem5
         private int _gold;
         private int _power;
         private int _def;
+        //구매한 아이템이 들어있는 인벤토리
         private List<IItem> _items;
 
         public Human() { }
@@ -63,7 +64,7 @@ namespace Problem5
         public int Def { get { return _def; } set { _def = value; } }
         public List<IItem> Items { get { return _items; } set { _items = value; } }
 
-
+        //아이템 구매
         public void Buy(IItem item)
         {
             if (Items.Count == 6)
@@ -81,7 +82,7 @@ namespace Problem5
             Items.Add(item);
             Console.WriteLine($"보유한 골드가 {item.Price}G 감소하여 {Gold}G가 됩니다.");
         }
-
+        //아이템 판매
         public void Sell(int numSell)
         {
             Console.WriteLine($"{Items[numSell - 1].Name} 을/를 판매합니다.");
@@ -89,14 +90,14 @@ namespace Problem5
             Console.WriteLine($"보유한 골드가 {Items[numSell - 1].Price}G 상승하여 {Gold}G가 됩니다.");
             Items.RemoveAt(numSell-1);
         }
-
+        //아이템 사용
         public void Use(int numUse)
         {
             Console.WriteLine($"{Items[numUse - 1].Name} 을/를 사용합니다.");
             Console.WriteLine($"플레이어가 다음과 같은 효과를 얻습니다 : {Items[numUse - 1].Effect}");
             Items.RemoveAt(numUse - 1);
         }
-
+       //인벤토리출력력
         public void ShowInventory()
         {
             for (int i = 0; i < _items.Count; i++)
@@ -108,7 +109,7 @@ namespace Problem5
                 Console.WriteLine();
             }
         }
-
+       //상태 출력력
         public void ShowStatus()
         {
             Console.WriteLine($"플레이어 골드 보유량: {Gold}G");
@@ -137,27 +138,32 @@ namespace Problem5
         public int Price { get;}
         public string Content { get;}
         public string Effect { get;}
-        
+        // 소비성 아이템인지 체크크
         public bool Consumable { get; }
     }
 
     public interface IWeapon : IItem
     {
         public int Power { get; }
+        // 플레이어 공격력 상승
         public void UpPower(Human human);
+        // 플레이어 공격력 하락
         public void DownPower(Human human);
     }
 
     public interface IArmor: IItem
     {
         public int Def { get; }
+         // 플레이어 방어력 상승
         public void UpDef(Human human);
+         // 플레이어 방어력 하락
         public void DownDef(Human human);
     }
 
     public interface IAccessory: IItem
     {
         public int Hp { get; }
+         // 플레이어 체력 상승승
         public void UpHp(Human human);
     }
 
