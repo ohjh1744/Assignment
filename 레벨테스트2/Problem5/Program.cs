@@ -1,5 +1,3 @@
-﻿using System.Numerics;
-
 namespace Problem5
 {
     // 1. 상속관계
