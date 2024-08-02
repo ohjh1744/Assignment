@@ -97,7 +97,7 @@ namespace Problem5
             Console.WriteLine($"플레이어가 다음과 같은 효과를 얻습니다 : {Items[numUse - 1].Effect}");
             Items.RemoveAt(numUse - 1);
         }
-       //인벤토리출력력
+       //인벤토리출력
         public void ShowInventory()
         {
             for (int i = 0; i < _items.Count; i++)
@@ -109,7 +109,7 @@ namespace Problem5
                 Console.WriteLine();
             }
         }
-       //상태 출력력
+       //상태 출력
         public void ShowStatus()
         {
             Console.WriteLine($"플레이어 골드 보유량: {Gold}G");
@@ -163,7 +163,7 @@ namespace Problem5
     public interface IAccessory: IItem
     {
         public int Hp { get; }
-         // 플레이어 체력 상승승
+         // 플레이어 체력 상승
         public void UpHp(Human human);
     }
 
