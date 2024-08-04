@@ -166,11 +166,10 @@ namespace Problem5
     }
 
 
+    //롱소드는 human의 Power을 상향.
     public class LongSword : Item
     {
         private int _power = 15;
-
-        public int Power { get { return _power; } set { _power = value; } }
 
         public LongSword(string name, int price, string explain, bool isUseable, string effect) : base(name, price, explain, isUseable, effect) { }
 
@@ -186,11 +185,10 @@ namespace Problem5
 
     }
 
+    //천갑옷은 human의 Def을 상향.
     public class ClothArmor : Item
     {
         private int _def = 15;
-
-        public int Def { get { return _def; } set { _def = value; } }
 
         public ClothArmor(string name, int price, string explain, bool isUseable, string effect) : base(name, price, explain, isUseable, effect) { }
 
@@ -205,11 +203,10 @@ namespace Problem5
         }
     }
 
+    //이상한캔디는 human의 Hp을 상향.
     public class StrangeCandy : Item
     {
         private int _hp = 300;
-
-        public int Hp { get { return _hp; } set { _hp = value; } }
 
         public StrangeCandy(string name, int price, string explain, bool isUseable, string effect) : base(name, price, explain, isUseable, effect) { }
 
