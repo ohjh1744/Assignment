@@ -5,13 +5,13 @@ namespace Problem5
     //      IInventory(인터페이스) --------------|
     //           ^                              |
     //           |          (서로의존관계)       v                          (의존관계)
-    //       Human(추상클래스)   <---->      Item(추상클래스)     <------------------------        AbstractFactory(추상클래스)
+    //       Human(추상클래스)   <---->      Item(추상클래스)     <------------------------        IFactory(인터페이스)
     //           ^                                ^                                                              ^
     //           |                                |                                                              | 
     //     Person(일반클래스)     LongSword  ClothArmor  StrangeCandy(일반클래스)          CreateLongSword  CreateClothArmor CreateStrangeCandy(일반클래스)
     //        
     //    
-    //   1. 팩토리패턴을 통해 Item을 생성합니다.
+    //   1. 팩토리 메소드 패턴을 통해 Item을 생성합니다.
     //   2. Inventory인터페이스는 아이템 판매, 구매, 사용, 출력 기능이 있고 이를 Human클래스에서 상속을 받아 정의합니다. 
     //   3. Human클래스에서는 Item 타입의 배열을 가지고 있고, Inventory에서도 Item타입을 이용합니다.
     //   4. Item에서도 추상함수에서 Human타입을 매개변수로 받습니다.
