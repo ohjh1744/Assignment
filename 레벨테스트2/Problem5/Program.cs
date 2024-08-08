@@ -257,14 +257,14 @@ namespace Problem5
     {
         static void Main(string[] args)
         {
-            IFactory abstractFactory = new CreateLongSword();
-            Item longSword = abstractFactory.CreateItem();
+            IFactory factory = new CreateLongSword();
+            Item longSword = factory.CreateItem();
 
-            abstractFactory = new CreateClothArmor();
-            Item clothArmor = abstractFactory.CreateItem();
+            factory = new CreateClothArmor();
+            Item clothArmor = factory.CreateItem();
 
-            abstractFactory = new CreateStrangeCandy();
-            Item strangeCandy = abstractFactory.CreateItem();
+            factory = new CreateStrangeCandy();
+            Item strangeCandy = factory.CreateItem();
 
             Human person = new Person(3000, 0, 0, 0);
 
