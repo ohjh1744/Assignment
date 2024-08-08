@@ -222,12 +222,12 @@ namespace Problem5
     }
 
 
-    public interface IAbstractFactory
+    public interface IFactory
     {
         Item CreateItem();
     }
 
-    public class CreateLongSword : IAbstractFactory
+    public class CreateLongSword : IFactory
     {
         public Item CreateItem()
         {
@@ -235,7 +235,7 @@ namespace Problem5
         }
     }
 
-    public class CreateClothArmor : IAbstractFactory
+    public class CreateClothArmor : IFactory
     {
         public Item CreateItem()
         {
@@ -243,7 +243,7 @@ namespace Problem5
         }
     }
 
-    public class CreateStrangeCandy : IAbstractFactory
+    public class CreateStrangeCandy : IFactory
     {
         public Item CreateItem()
         {
@@ -257,7 +257,7 @@ namespace Problem5
     {
         static void Main(string[] args)
         {
-            IAbstractFactory abstractFactory = new CreateLongSword();
+            IFactory abstractFactory = new CreateLongSword();
             Item longSword = abstractFactory.CreateItem();
 
             abstractFactory = new CreateClothArmor();
