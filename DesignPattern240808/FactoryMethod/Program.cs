@@ -36,7 +36,7 @@
     {
         public override Stage CreateStage()
         {
-            return new Gunsan();  
+            return new Gunsan();  // CreateGusan과 Gunsan은 의존관계가 아니다!!
         }                         
     }
 
