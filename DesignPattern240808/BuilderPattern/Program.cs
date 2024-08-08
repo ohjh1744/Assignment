@@ -2,7 +2,7 @@
 {
     //                               
     //                                  (의존)                        (의존)
-    //          animal (추상클래스)     <----       AnimalBuilder     ------>     Factory   (추상클래스)  
+    //          animal (추상클래스)     <----       AnimalBuilder     ------>     IFactory   (인터페이스)  
     //            ^                                                                  ^ 
     //            |                                                                  |
     //   Mammalia    Bird  (일반클래스)                               MammaliaCreate   BirdCreate (일반클래스)  
