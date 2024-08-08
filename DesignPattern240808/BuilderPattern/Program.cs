@@ -64,7 +64,7 @@
     public  class AnimalBuilder
     {
         private Animal animal;   
-        public AnimalBuilder(Factory factory)
+        public AnimalBuilder(IFactory factory)
         {
             animal = factory.AnimalCreate();
         }
@@ -89,7 +89,7 @@
     {
         static void Main(string[] args)
         {
-            Factory factory = new MammaliaCreate();
+            IFactory factory = new MammaliaCreate();
             AnimalBuilder animalBuilder = new AnimalBuilder(factory);
 
             animalBuilder.SetName("바다사자");
