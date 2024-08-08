@@ -36,8 +36,8 @@
     {
         public override Stage CreateStage()
         {
-            return new Gunsan();  //CreateGunsan이라는 구체적 클래스에서 Gunsan이라는 구체적 클래스를 return값으로 받지만, Type은 Stage이므로 추상클래스에 의존하여
-        }                         //의존성 역전원칙에 위배되는게 아닌지?
+            return new Gunsan();  
+        }                         
     }
 
     public class CreateJunju : StageFactory
@@ -52,7 +52,7 @@
     {
         static void Main(string[] args)
         {
-            StageFactory factory = new CreateGunsan(); // 마찬가지로 Program이라는 구체적클래스에서 CreateGunsan이라는 구체적 클래스를 사용하지만, StageFactory를 type으로 사용하므로 추상클래스를 의존하여 의존성 역전원칙을 위반하는게 아닌지?
+            StageFactory factory = new CreateGunsan(); //  Program과 CreateGunsan은 서로 아예 의존관계가 아니며 Program은 객체지향 구현할때 예외시켜도 됨
             Stage stage = factory.CreateStage();
         }
     }
