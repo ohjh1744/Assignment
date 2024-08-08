@@ -40,22 +40,22 @@
         }
     }
 
-    public abstract class Factory
+    public interface IFactory
     {
-        public abstract Animal AnimalCreate();
+        public  Animal AnimalCreate();
     }
 
-    public class MammaliaCreate : Factory
+    public class MammaliaCreate : IFactory
     {
-        public override Animal AnimalCreate()
+        public  Animal AnimalCreate()
         {
             return new Mammalia();
         }
     }
 
-    public class BirdCreate : Factory
+    public class BirdCreate : IFactory
     {
-        public override Animal AnimalCreate()
+        public  Animal AnimalCreate()
         {
             return new Bird();
         }
